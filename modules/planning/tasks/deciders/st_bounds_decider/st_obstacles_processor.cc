@@ -706,15 +706,15 @@ std::vector<std::pair<double, double>> STObstaclesProcessor::FindSGaps(
   obs_s_edges.emplace_back(s_min, false);
   obs_s_edges.emplace_back(s_max, true);
   // obs_s_edges.emplace_back(std::numeric_limits<double>::max(), false);
-  std::sort(
-      obs_s_edges.begin(), obs_s_edges.end(),
-      [](const std::pair<double, bool>& lhs, const std::pair<double, bool>& rhs) {
-        if (lhs.first != rhs.first) {
-          return lhs.first < rhs.first;
-        } else {
-          return lhs.second > rhs.second;
-        }
-      });
+  std::sort(obs_s_edges.begin(), obs_s_edges.end(),
+            [](const std::pair<double, bool>& lhs,
+               const std::pair<double, bool>& rhs) {
+              if (lhs.first != rhs.first) {
+                return lhs.first < rhs.first;
+              } else {
+                return lhs.second > rhs.second;
+              }
+            });
 
   std::vector<std::pair<double, double>> s_gaps;
   int num_st_obs = 1;
